@@ -1,28 +1,26 @@
 import os
-from sites import sitelist
 import webbrowser
 import speech_recognition as sr
 import win32com.client
 import openai
+from sites import sitelist
 from function_main import *
+from gemini_test import *
+from modes import *
+
+# Global mode tracker
+current_mode = "continue"  # "continue" = local, "internet" = AI mode
 
 
 
 if __name__ == "__main__":
     print("Program started")
-    say("Hey there!!I am blobber")
+    say(f"Hey there!I am Blobber, A small guideline:"
+        f"!local and internet are two modes!tell switch to change modes")
 
-    sites = sitelist()
+    # Main control loop
     while True:
-        print("Listening....")
-        query = takecommand()
-
-        for site in sites:
-            if f"open {site[0]}".lower() in query.lower():
-                webbrowser.open(site[1])
-                say(f'opening {site[0]}...')
-        print(query)
-
-        if 'open image' in query:
-            musicpath=r"C:\Users\shreyas\OneDrive\Pictures\Screenshots"
-            os.startfile(musicpath)
+        if get_mode() == "continue":
+            localmode()
+        elif get_mode() == "internet":
+            internetmode()
