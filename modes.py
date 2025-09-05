@@ -4,10 +4,15 @@ import webbrowser
 import speech_recognition as sr
 import win32com.client
 import openai
+from pyexpat import features
+
 from sites import sitelist
 from function_main import *
 from gemini_test import *
 
+
+# Global mode tracker
+current_mode = "continue"  # "continue" = local, "internet" = AI mode
 
 def set_mode(new_mode):
     global current_mode
@@ -16,6 +21,11 @@ def set_mode(new_mode):
 def get_mode():
     global current_mode
     return current_mode
+
+# Setting the chatting features
+
+def chat(query):
+        pass
 
 # todo:Add new mode funtionalities here
 

@@ -12,7 +12,6 @@ from modes import *
 current_mode = "continue"  # "continue" = local, "internet" = AI mode
 
 
-
 if __name__ == "__main__":
     print("Program started")
     say(f"Hey there!I am Blobber, A small guideline:"
